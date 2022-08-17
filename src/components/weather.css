@@ -1,10 +1,138 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 .wrapper {
+    padding: 0 2em;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     align-items: center;
 }
 
-.temperature {
+.weather-info {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    font-size: 54px;
+    text-align: center;
+}
+
+.weather-info img {
+    min-width: 125px;
+}
+
+.weather-info .description {
+    font-size: 32px;
+}
+
+.footer-info {
+    display: flex;
+    font-size: 24px;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;    
+}
+
+.footer-info div{
+    text-align: center;
+    margin: 0 .5rem;
+}
+
+.footer-info svg {
+    margin-right: .75em;
+}
+
+.timezone {
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+    width: 100%;
+    margin: 1em;
+}
+
+.weather-panel {
+    background-color: #daf3ff;
+    color: var(--dark);
+    align-items: center;
+    min-height: 250px;
+    width: 100vw;
+}
+
+.switch-wrapper {
+    margin-bottom: 100px;
+}
+
+.switch {
+    position: fixed;
+    left: 50%;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 40px;
+    display: flex;
+    margin-top: 1rem;
+    margin-left: -90px;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 180px;
+    padding: .75em 1.25em;
+}
+
+.switch p:not(:last-child) {
+    margin-right: 10px;
+}
+
+
+.switch:hover {
+    cursor: pointer;
+}
+
+.switch .active {
+    background-color: white;
+    color: var(--primary);
+    padding: 1em 1.5em;
+    border-radius: 30px;
+    font-weight: 900;
+}
+
+.predictions {
+    display: flex;
+    padding: 1em 1.5em;
+    overflow-x: scroll;
+    scrollbar-color: var(--primary) rgba(0, 0, 0, 0);
+}
+
+.predictions::-webkit-scrollbar {
+    height: 7px;
+}
+
+.predictions::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+}
+
+.predictions::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.predictions .detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: .5em .75em;
+    font-size: 18px;
+}
+
+.predictions .detail svg {
+    color: var(--primary);
+    font-size: 34px;
+    margin: .75em 0;
+}
+
+.error {
+    color: #e94a4a;
 }
