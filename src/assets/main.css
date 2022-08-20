@@ -1,35 +1,19 @@
-@import "./base.css";
+ * {
+  padding: 0;
+  border: 0;
+  margin: 0;
+ }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+ :root {
+    --dawn: linear-gradient(to bottom, #233072, #fda65a);
+    --morning: linear-gradient(to bottom, #4dc3ff, #b3ffff);
+    --afternoon: linear-gradient(to bottom,  #fda65a 0%,#ffe467 100%);
+    --evening: linear-gradient(to bottom,  #f06b7e, #f9a856);
+    --night: linear-gradient(to bottom,  #040b3c 0%,#233072 100%);
 
-  font-weight: normal;
-}
+    --primary: #25a2e0;
+    --primary-dark: #00537c;
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
+    --light: #fcfeff;
+    --dark: #2a2a30;
+ }
