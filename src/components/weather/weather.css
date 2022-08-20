@@ -3,18 +3,18 @@
 }
 
 .wrapper {
-    padding: 0 2em;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     align-items: center;
+    justify-content: space-between;
+    animation: fadeIn ease 1.5s forwards;
 }
 
 .weather-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: auto;
+    margin: 1em auto;
     font-size: 54px;
     text-align: center;
 }
@@ -32,7 +32,6 @@
     font-size: 24px;
     width: 100%;
     justify-content: space-evenly;
-    margin-bottom: 1rem;    
 }
 
 .footer-info div{
@@ -53,10 +52,11 @@
 }
 
 .weather-panel {
+    position: relative;
     background-color: #daf3ff;
     color: var(--dark);
     align-items: center;
-    min-height: 250px;
+    min-height: 275px;
     width: 100vw;
 }
 
@@ -65,8 +65,9 @@
 }
 
 .switch {
-    position: fixed;
+    position: absolute;
     left: 50%;
+    top: 5px;
     background-color: var(--primary);
     color: white;
     border-radius: 40px;
@@ -135,4 +136,22 @@
 
 .error {
     color: #e94a4a;
+}
+
+.light {
+    color: var(--light);
+}
+
+.dark {
+    color: var(--dark);
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

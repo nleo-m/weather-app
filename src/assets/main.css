@@ -4,10 +4,6 @@
   margin: 0;
  }
 
- body {
-   animation: fadeIn ease 1.5s forwards;
- }
-
  :root {
     --dawn: linear-gradient(to bottom, #233072, #fda65a);
     --morning: linear-gradient(to bottom, #4dc3ff, #b3ffff);
@@ -21,12 +17,3 @@
     --light: #fcfeff;
     --dark: #2a2a30;
  }
-
- @keyframes fadeIn {
-   0% {
-       opacity: 0;
-   }
-   100% {
-       opacity: 1;
-    }
-}
