@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     margin: 1em auto;
-    font-size: 54px;
+    font-size: var(--title);
     text-align: center;
 }
 
@@ -24,14 +24,15 @@
 }
 
 .weather-info .description {
-    font-size: 32px;
+    font-size: var(--subtitle);
 }
 
 .footer-info {
     display: flex;
-    font-size: 24px;
+    font-size: var(--subtitle-2);
     width: 100%;
     justify-content: space-evenly;
+    margin: 1em 0;
 }
 
 .footer-info div{
@@ -46,7 +47,7 @@
 .timezone {
     display: flex;
     justify-content: space-around;
-    font-size: 24px;
+    font-size: var(--subtitle-2);
     width: 100%;
     margin: 1em;
 }
@@ -125,7 +126,7 @@
     align-items: center;
     justify-content: center;
     margin: .5em .75em;
-    font-size: 18px;
+    font-size: var(--text);
 }
 
 .predictions .detail svg {

@@ -3,7 +3,7 @@
     flex-direction: column;
     margin: auto;
     align-items: center;
-    font-size: 24px;
+    font-size: var(--subtitle-2);
     padding: 0 2em;
     color: var(--dark);
 }
@@ -20,12 +20,12 @@
 }
 
 .error-wrapper svg{
-    font-size: 48px;
+    font-size: var(--title);
     align-self: flex-start;
     margin-right: .5em;
 }
 
 .error-wrapper p:last-child {
-    font-size: 18px;
+    font-size: var(--text);
     margin-top: 1em;
 }

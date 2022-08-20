@@ -1,6 +1,5 @@
 <script setup>
 import Weather from "./components/weather/Weather.vue";
-import Loading from "./components/general/Loading.vue";
 import Error from "./components/general/Error.vue";
 import { GET_WEATHER } from "./services/api";
 </script>
@@ -22,7 +21,6 @@ import { GET_WEATHER } from "./services/api";
     <Error v-if="errors.length > 0" :errors="errors"></Error>
     
   </section>
-  <!-- <Loading v-if="!weather && !errors"/> -->
 
 </template>
 
