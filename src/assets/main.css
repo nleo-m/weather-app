@@ -16,4 +16,18 @@
 
     --light: #fcfeff;
     --dark: #2a2a30;
+
+    --title: 48px;
+    --subtitle: 28px;
+    --subtitle-2: 22px;
+    --text: 18px;
+ }
+
+ @media screen and (max-width: 640px) {
+   :root {
+      --title: 42px;
+      --subtitle: 22px;
+      --subtitle-2: 18px;
+      --text: 14px;
+   }
  }
