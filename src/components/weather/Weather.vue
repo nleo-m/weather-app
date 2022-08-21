@@ -1,5 +1,5 @@
 <template>
-    <section :class="`wrapper ${dayPeriod == 'night' || dayPeriod == 'dawn' ? 'dark' : 'light'}` " :style="{backgroundImage: `var(${dayPeriod})`}">
+    <section class="wrapper" :style="{backgroundImage: `var(${dayPeriod})`, color: dayPeriod == '--night' || dayPeriod == '--dawn' ? 'var(--light)' : 'var(--dark)'}">
         <div class="timezone">
           <p>{{currentTime}}</p>
           <p>{{timezone}}</p>
@@ -65,9 +65,6 @@
     name: 'Weather',
     data () {
       return {
-        timezone: null,
-        currentTime: null,
-        dayPeriod: null,
         panelSwitch: false,
       }
     },
@@ -87,8 +84,5 @@
         return this.panelSwitch = !this.panelSwitch;
       }
     },
-    mounted () {
-      console.log(this.dayPeriod);
-    }
   }
 </script>

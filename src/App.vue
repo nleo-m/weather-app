@@ -71,7 +71,7 @@ export default {
         },
         error => {
           console.log(error);
-          this.setError({message: 'Não foi possível obter as informações sobre o clima.'});
+          this.setError({error: error, message: 'Não foi possível obter as informações sobre o clima.'});
         }
       )
     },
@@ -109,7 +109,6 @@ export default {
       else if (hour >= 12 && hour < this.sunsetIn) return "--afternoon";
       else if (hour >= this.sunsetIn && hour < this.sunsetIn + 2) return "--evening";
       else return "--night";
-
     },
   },
   mounted() {
