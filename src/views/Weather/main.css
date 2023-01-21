@@ -1,0 +1,32 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeIn ease 1.5s forwards;
+}
+
+.error {
+  color: #e94a4a;
+}
+
+.light {
+  color: var(--light);
+}
+
+.dark {
+  color: var(--dark);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
