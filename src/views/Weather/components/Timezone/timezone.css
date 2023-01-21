@@ -1,0 +1,7 @@
+.timezone {
+  display: flex;
+  justify-content: space-around;
+  font-size: var(--smaller-subtitle);
+  width: 100%;
+  margin: 1em;
+}

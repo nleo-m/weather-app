@@ -2,7 +2,7 @@
     <section class="error-wrapper">
         <div>
             <font-awesome-icon icon="fa-solid fa-bug" />
-            <span>Ocorreu um erro</span>
+            <h1>Ocorreu um erro</h1>
         </div>
         <p>{{errors[0]}}</p>
         <p>Verifique o console para mais informações</p>
