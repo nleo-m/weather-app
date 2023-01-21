@@ -19,15 +19,16 @@
 
     --title: 48px;
     --subtitle: 28px;
-    --subtitle-2: 22px;
+    --smaller-subtitle: 22px;
     --text: 18px;
+    --smaller-text: 16px;
  }
 
  @media screen and (max-width: 640px) {
    :root {
       --title: 42px;
       --subtitle: 22px;
-      --subtitle-2: 18px;
+      --smaller-subtitle: 18px;
       --text: 14px;
    }
  }

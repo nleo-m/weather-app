@@ -1,0 +1,16 @@
+.footer-info {
+  display: flex;
+  font-size: var(--smaller-subtitle);
+  width: 100%;
+  justify-content: space-evenly;
+  margin: 1em 0;
+}
+
+.footer-info div {
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+.footer-info svg {
+  margin-right: 0.75em;
+}

@@ -1,79 +1,73 @@
 <script setup>
-import Weather from "./components/weather/Weather.vue";
-import Error from "./components/general/Error.vue";
+import Main from "./views/Weather/Main.vue";
+import Error from "./views/Error/Error.vue";
 import { GET_WEATHER } from "./services/api";
+import { unixToTimestamp, getFormattedTime } from "./utilities/time";
+import { reactive } from "vue";
 </script>
 
 <template>
   <section class="wrapper">
-    <pulse-loader v-if="!weather && errors.length == 0" :color="'var(--primary)'" size="32px"></pulse-loader>
-
-    <Weather
-      v-if="weather && errors.length == 0"
-      :dayPeriod="dayPeriod"
-      :weather="weather"
-      :timezone="timezone"
-      :unixToTimestamp="unixToTimestamp"
-      :getFormattedTime="getFormattedTime"
-      :currentTime="currentTime"
+    <pulse-loader
+      v-if="!state.weather && errors.length == 0"
+      :color="'var(--primary)'"
+      size="32px"
     />
-  
-    <Error v-if="errors.length > 0" :errors="errors"></Error>
-    
-  </section>
 
+    <Main v-if="state.weather && errors.length == 0" />
+
+    <Error v-if="errors.length > 0" :errors="errors" />
+  </section>
 </template>
 
 <style scoped>
-  .wrapper{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: aliceblue;
-  }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: aliceblue;
+}
 
-  .v-spinner {
-    margin: auto;
-    align-self: center;
-  }
+.v-spinner {
+  margin: auto;
+  align-self: center;
+}
 </style>
 
 <script>
+export const state = reactive({
+  weather: null,
+  timezone: null,
+  dayPeriod: null,
+  currentTime: null,
+});
+
 export default {
   data() {
     return {
-      weather: null,
-      tiemzone: null,
-      dayPeriod: null,
-      sunriseIn: null,
-      sunsetIn: null,
-      currentTime: null,
+      state,
       errors: [],
     };
   },
   methods: {
     getWeather(location) {
       GET_WEATHER(location.coords).then(
-        response => {
+        (response) => {
           const { data } = response;
-          this.timezone = data.timezone;
-          this.weather = {
+          state.timezone = data.timezone;
+          state.weather = {
             current: data.current,
             hourly: data.hourly,
             daily: data.daily,
           };
-    
-          const sunriseIn = this.unixToTimestamp(this.weather.current.sunrise);
-          const sunsetIn = this.unixToTimestamp(this.weather.current.sunset);
-    
-          this.sunriseIn = sunriseIn.getHours();
-          this.sunsetIn = sunsetIn.getHours();
         },
-        error => {
-          console.log(error);
-          this.setError({message: 'Não foi possível obter as informações sobre o clima.'});
+        (error) => {
+          this.setError({
+            error: error,
+            message: "Não foi possível obter as informações sobre o clima.",
+          });
         }
-      )
+      );
     },
 
     setError(error) {
@@ -81,35 +75,27 @@ export default {
       return this.errors.push(error.message);
     },
 
-    unixToTimestamp(timestamp) {
-      return new Date(timestamp * 1000);
-    },
-
     getCurrentTime() {
       const date = new Date();
-      const currHour = date.getHours();
 
-      this.dayPeriod = this.getDayPeriod(currHour);
-      this.currentTime = this.getFormattedTime(date);
+      if (state?.weather) state.dayPeriod = this.getDayPeriod(date.getHours());
+
+      state.currentTime = getFormattedTime(date);
     },
 
-    getFormattedTime(timestamp) {
-      const aditionalZero = (value) => {
-        return value < 10 ? '0' + value : value;
-      };
+    getDayPeriod(currentTime) {
+      const sunrise = unixToTimestamp(
+        state.weather.current.sunrise
+      )?.getHours();
+      const sunset = unixToTimestamp(state.weather.current.sunset)?.getHours();
 
-      return (
-        aditionalZero(timestamp.getHours()) + ":" + aditionalZero(timestamp.getMinutes())
-      );
-    },
-
-    getDayPeriod(hour) {
-      if (hour >= this.sunriseIn && hour < this.sunriseIn + 2) return "--dawn";
-      else if (hour >= this.sunriseIn + 2 && hour < 12) return "--morning";
-      else if (hour >= 12 && hour < this.sunsetIn) return "--afternoon";
-      else if (hour >= this.sunsetIn && hour < this.sunsetIn + 2) return "--evening";
+      if (currentTime >= sunrise && currentTime < sunrise + 2) return "--dawn";
+      else if (currentTime >= sunrise + 2 && currentTime < 12)
+        return "--morning";
+      else if (currentTime >= 12 && currentTime < sunset) return "--afternoon";
+      else if (currentTime >= sunset && currentTime < sunset + 2)
+        return "--evening";
       else return "--night";
-
     },
   },
   mounted() {
