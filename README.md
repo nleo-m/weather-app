@@ -1,16 +1,16 @@
 # weather-app
 
-This template should help get you started developing with Vue 3 in Vite.
+<div align="center">
+  <img src="./public/preview.png" width="100%" />
+</div>
 
-## Recommended IDE Setup
+Responsive and minimalist Weather app integrated with OpenWeather API, that shows you current weather and forecasts based on your location.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## To build locally
 
 ## Customize configuration
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+### Install the dependencies
 
 ```sh
 npm install
